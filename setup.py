@@ -63,9 +63,14 @@ setuptools.setup(
     ],
     extras_require={
         'dev': [
-            'pytest',
+            'pytest>=7.0.0',
+            'pytest-cov',
+            'flake8',
+            'black',
+            'isort',
             'twine',
-            'wheel'
+            'wheel',
+            'build',
         ]
     },
     project_urls={
