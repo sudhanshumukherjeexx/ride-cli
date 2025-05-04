@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ride-cli"
+version = "0.3.0"
+description = "RIDE: Rapid Insights Data Engine - An open-source toolkit for data analysis in terminal"
+readme = "README.md"
+authors = [{name = "Sudhanshu Mukherjee", email = "sudhanshumukherjeexx@gmail.com"}]
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+keywords = ["data-preprocessing", "machine-learning", "data-science", "cli", "data-exploration"]
+requires-python = ">=3.7"
+dependencies = [
+    "blessed==1.19.1",
+    "imbalanced_learn==0.10.1",
+    "imblearn==0.0",
+    "joblib==1.2.0",
+    "matplotlib==3.10.1",
+    "numpy==2.2.3",
+    "pandas==2.2.3",
+    "plotext==5.2.8",
+    "pydantic==2.10.6",
+    "pyfiglet==0.8.post1",
+    "pytest==7.3.1",
+    "scikit_learn==1.6.1",
+    "scipy==1.15.2",
+    "termcolor==2.3.0",
+    "pyarrow==19.0.1",
+    "seaborn==0.11.2",
+    "tqdm==4.66.1",
+    "lightgbm==4.6.0",
+    "xgboost==2.1.4",
+    "nbformat==5.10.0",
+    "setuptools==76.1.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "twine",
+    "wheel",
+    "black",
+    "isort",
+    "flake8"
+]
+
+[project.urls]
+Homepage = "https://github.com/sudhanshumukherjeexx/ride-cli"
+Documentation = "https://github.com/sudhanshumukherjeexx/ride-cli#readme"
+Repository = "https://github.com/sudhanshumukherjeexx/ride-cli.git"
+Issues = "https://github.com/sudhanshumukherjeexx/ride-cli/issues"
+Changelog = "https://github.com/sudhanshumukherjeexx/ride-cli/blob/main/CHANGELOG.md"
+
+[project.scripts]
+ride = "ride.cli:main"
+ride-cli = "ride.cli:main"
+
+[tool.setuptools]
+packages = ["ride"]
+
+[tool.black]
+line-length = 100
+target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
