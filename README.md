@@ -180,7 +180,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📜 Changelog
 
-### v0.3.0 (2024)
+### v0.3.0 (2025)
 - 🎉 Renamed from `prepup-linux` to `ride-cli`
 - 🌍 Added cross-platform support
 - ✨ Enhanced user interface
