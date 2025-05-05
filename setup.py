@@ -6,7 +6,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setuptools.setup(
     name="ride-cli",
-    version="0.3.0",  
+    version="0.3.1",  
     author="Sudhanshu Mukherjee",
     author_email="sudhanshumukherjeexx@gmail.com",
     description="RIDE: Rapid Insights Data Engine - An open-source toolkit for data analysis in terminal",
@@ -59,7 +59,8 @@ setuptools.setup(
         "lightgbm==4.6.0",
         "xgboost==2.1.4",
         "nbformat==5.10.0",
-        "setuptools==76.1.0"
+        "setuptools==76.1.0",
+        "openpyxl>=3.0.0",
     ],
     extras_require={
         'dev': [
@@ -71,7 +72,13 @@ setuptools.setup(
             'twine',
             'wheel',
             'build',
-        ]
+        ],
+
+        'docs': [
+            'mkdocs',
+            'mkdocs-material',
+            'mkdocstrings[python]',
+    ]
     },
     project_urls={
         'Bug Reports': 'https://github.com/sudhanshumukherjeexx/ride-cli/issues',

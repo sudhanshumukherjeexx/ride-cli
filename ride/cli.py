@@ -12,13 +12,14 @@ import time
 from sklearn.model_selection import train_test_split
 import io
 import sys
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 import shutil
 import textwrap
 import warnings
 
 
 term_font = Figlet(font="term")
+
+#sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 
 def load_file(file_path):
@@ -860,6 +861,10 @@ class RideInteractive:
                    
 
 def main():
+    # Set up stdout encoding only when running as main script
+    if sys.stdout.encoding != 'utf-8':
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    
     # argument parsing
     parser = argparse.ArgumentParser(description="""
         RIDE: Rapid Insights Data Engine.

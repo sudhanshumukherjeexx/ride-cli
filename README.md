@@ -24,7 +24,7 @@
 - 📈 Advanced data exploration
 - 🧹 Missing value handling
 - 📊 Feature visualization
-- 🤖 Automatic Machine Learning (AutoML) model selection
+- 🤖 Auto Machine Learning (AutoML) model selection
 
 ### 🛠️ Key Functionalities
 - Data Loading

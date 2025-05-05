@@ -1,0 +1,84 @@
+site_name: RIDE CLI Documentation
+site_description: Rapid Insights Data Engine - An open-source toolkit for data analysis in terminal
+site_author: Sudhanshu Mukherjee
+site_url: https://sudhanshumukherjeexx.github.io/ride-cli/
+repo_url: https://github.com/sudhanshumukherjeexx/ride-cli
+repo_name: sudhanshumukherjeexx/ride-cli
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_root_heading: true
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quickstart.md
+    
+  - User Guide:
+      - Interactive Interface: user-guide/interface.md
+      
+  - API Reference:
+      - CLI Interface: api/cli.md
+      - Utils Module: api/utils.md
+      - AutoML Module: api/automl.md
+  
+  - Contributing:
+      - Development Setup: contributing/development.md
+      - Testing: contributing/testing.md
+      - Release Process: contributing/release.md
+  
+  - Changelog: changelog.md
+  - About: about.md

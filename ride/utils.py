@@ -58,8 +58,9 @@ class Prepup:
             Returns:
                 A dictionary with the columns as keys and their respective null counts as values.
         """
-        if self.dataframe.empty() == True:
+        if self.dataframe.empty:  
             print("No Missing Value Found")
+            return pd.Series(dtype=int)  
         else:
             missing_value = self.dataframe.isnull().sum()
             return missing_value
