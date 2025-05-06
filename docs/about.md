@@ -64,14 +64,14 @@ If you use RIDE CLI in your research or academic work, please cite it as:
 
 
 ### IEEE Format
-S. Mukherjee, "RIDE CLI: Rapid Insights Data Engine for Data analysis using terminal," 2024. [Online]. Available: https://github.com/sudhanshumukherjeexx/ride-cli
+S. Mukherjee, "RIDE CLI: Rapid Insights Data Engine for Data analysis using terminal," 2025. [Online]. Available: https://github.com/sudhanshumukherjeexx/ride-cli
 
 ### BibTeX Format
 ```bibtex
-@software{mukherjee2024ride,
+@software{mukherjee2025ride,
   author = {Mukherjee, Sudhanshu},
   title = {RIDE CLI: Rapid Insights Data Engine for Data analysis using terminal},
-  year = {2024},
+  year = {2025},
   url = {https://github.com/sudhanshumukherjeexx/ride-cli}
 }
 ```

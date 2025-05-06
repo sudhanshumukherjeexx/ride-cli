@@ -3,7 +3,7 @@
 def test_import():
     """Test that the package can be imported"""
     import ride
-    assert ride.__version__ == "0.3.1"
+    assert ride.__version__ == "0.3.2"
 
 def test_cli_import():
     """Test that the CLI module can be imported"""

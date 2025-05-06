@@ -2,7 +2,7 @@
 
 ## System Requirements
 
-RIDE CLI supports Python 3.8+ and runs on:
+RIDE CLI supports Python 3.10+ and runs on:
 - 🐧 Linux
 - 🍎 macOS
 - 🪟 Windows

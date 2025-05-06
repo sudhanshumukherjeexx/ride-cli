@@ -6,7 +6,7 @@ This guide provides information for developers who want to contribute to RIDE CL
 
 ### Prerequisites
 
-- Python 3.8 or higher
+- Python 3.10 or higher
 - Git
 - pip
 - Virtual environment (venv or conda)

@@ -27,12 +27,12 @@ Manually update version numbers in these files:
 
 1. **ride/__init__.py**:
    ```python
-   __version__ = "0.3.1"  # Update to new version
+   __version__ = "0.3.2"  # Update to new version
    ```
 
 2. **setup.py**:
    ```python
-   version="0.3.1",  # Update to new version
+   version="0.3.2",  # Update to new version
    ```
 
 3. **pyproject.toml**:
@@ -45,7 +45,7 @@ Manually update version numbers in these files:
 Add a new entry at the top of the CHANGELOG.md file:
 
 ```markdown
-## [0.3.1] - YYYY-MM-DD
+## [0.3.X] - YYYY-MM-DD
 
 ### Added
 - List of new features
@@ -86,7 +86,7 @@ git commit -m "Release v0.3.1"
 
 ```bash
 # Create an annotated tag
-git tag -a v0.3.1 -m "Release v0.3.1"
+git tag -a v0.3.2 -m "Release v0.3.2"
 ```
 
 ## Step 5: Push to GitHub
@@ -103,8 +103,8 @@ git push origin v0.3.1
 
 1. Go to https://github.com/sudhanshumukherjeexx/ride-cli/releases
 2. Click "Draft a new release"
-3. Select the tag you created (v0.3.1)
-4. Title: "RIDE CLI v0.3.1"
+3. Select the tag you created (v0.3.2)
+4. Title: "RIDE CLI v0.3.2"
 5. Description: Copy release notes from CHANGELOG.md
 6. Attach the built packages from the `dist/` directory
 7. Click "Publish release"
@@ -140,10 +140,10 @@ mkdocs build # Deploy to your documentation hosting service
 **Problem**: Tag already exists  
 **Solution**: Delete the existing tag and create a new one
 ```bash
-git tag -d v0.3.1
-git push origin :refs/tags/v0.3.1
-git tag -a v0.3.1 -m "Release v0.3.1"
-git push origin v0.3.1
+git tag -d v0.3.2
+git push origin :refs/tags/v0.3.2
+git tag -a v0.3.2 -m "Release v0.3.2"
+git push origin v0.3.2
 ```
 
 **Problem**: Upload fails  
@@ -174,17 +174,17 @@ For experienced maintainers, here's a quick reference:
 
 # 3. Commit and tag
 git add .
-git commit -m "Release v0.3.1"
-git tag -a v0.3.1 -m "Release v0.3.1"
+git commit -m "Release v0.3.2"
+git tag -a v0.3.2 -m "Release v0.3.2"
 
 # 4. Push
 git push origin main
-git push origin v0.3.1
+git push origin v0.3.2
 
 
 # 5. Create GitHub release
 git push origin main
-git push origin v0.3.1
+git push origin v0.3.2
 
 
 # 6. Deploy docs

@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.2] - 2025-05-05
+
+### Fixed
+- Matploltib3.10 compatibility issues with python 3.7, 3.8, 3.9 
+- Supports >=python3.10 
+
+### Developer Notes
+- All tests now passing successfully (21 tests)
+- Fixed pytest compatibility issues with stdout modification
+- Improved test isolation using fixtures
+
+
 ## [0.3.1] - 2025-05-04
 
 ### Added
@@ -21,10 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Added openpyxl as a dependency for Excel file support in tests
 
-### Developer Notes
-- All tests now passing successfully (21 tests)
-- Fixed pytest compatibility issues with stdout modification
-- Improved test isolation using fixtures
+
 
 ## [0.3.0] - 2025-05-04
 
