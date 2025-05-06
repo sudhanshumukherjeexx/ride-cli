@@ -44,8 +44,8 @@ dependencies = [
     "lightgbm==4.6.0",
     "xgboost==2.1.4",
     "nbformat==5.10.0",
-    "setuptools==76.1.0"
-    "openpyxl>=3.0.0",
+    "setuptools==76.1.0",
+    "openpyxl>=3.0.0"
 ]
 
 [project.optional-dependencies]
