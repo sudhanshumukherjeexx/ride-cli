@@ -2,7 +2,7 @@
 
 ![Static Badge](https://img.shields.io/badge/Built_with_%E2%99%A5%EF%B8%8F-Sudhanshu_Mukherjee-black?link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsudhanshumukherjeexx%2F)
 
-![Python Versions](https://img.shields.io/badge/python-3.7+-blue.svg)
+![Python Versions](https://img.shields.io/badge/python-3.10+-blue.svg)
 [![image](https://img.shields.io/pypi/v/ride-cli.svg)](https://pypi.python.org/pypi/ride-cli)
 ![Static Badge](https://img.shields.io/badge/Linux-Supported-green)
 ![Static Badge](https://img.shields.io/badge/macOS-Supported-blue)
@@ -174,11 +174,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 🔗 Package Links
 
+- Documentation: https://sudhanshumukherjeexx.github.io/ride-cli/ 
 - Github: https://github.com/sudhanshumukherjeexx/ride-cli
 - PyPI: https://pypi.org/project/ride-cli/
 - Previous Package (prepup-linux): https://github.com/sudhanshumukherjeexx/prepup-linux
 
-## 📜 Changelog
+## 📜 Major Updates
 
 ### v0.3.0 (2025)
 - 🎉 Renamed from `prepup-linux` to `ride-cli`
