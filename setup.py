@@ -2,7 +2,7 @@ import setuptools
 from pathlib import Path
 
 this_directory = Path(__file__).parent
-long_description = (this_directory / "README.md").read_text()
+long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
 setuptools.setup(
     name="ride-cli",
@@ -20,10 +20,6 @@ setuptools.setup(
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
@@ -31,7 +27,7 @@ setuptools.setup(
         "Topic :: Software Development :: Libraries :: Python Modules"
     ],
     keywords='data-analysis machine-learning data-science cli data-exploration',
-    python_requires='>=3.7',
+    python_requires='>=3.10',
     entry_points={
         "console_scripts": [
             "ride = ride.cli:main",
@@ -39,6 +35,7 @@ setuptools.setup(
         ]
     },
     install_requires=[
+        "openpyxl>=3.0.0",
         "blessed==1.19.1",
         "imbalanced_learn==0.10.1",
         "imblearn==0.0",
@@ -59,8 +56,7 @@ setuptools.setup(
         "lightgbm==4.6.0",
         "xgboost==2.1.4",
         "nbformat==5.10.0",
-        "setuptools==76.1.0",
-        "openpyxl>=3.0.0",
+        "setuptools==76.1.0", 
     ],
     extras_require={
         'dev': [
@@ -78,7 +74,7 @@ setuptools.setup(
             'mkdocs',
             'mkdocs-material',
             'mkdocstrings[python]',
-    ]
+        ]
     },
     project_urls={
         'Bug Reports': 'https://github.com/sudhanshumukherjeexx/ride-cli/issues',
