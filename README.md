@@ -174,11 +174,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 🔗 Package Links
 
+- Documentation: https://sudhanshumukherjeexx.github.io/ride-cli/ 
 - Github: https://github.com/sudhanshumukherjeexx/ride-cli
 - PyPI: https://pypi.org/project/ride-cli/
 - Previous Package (prepup-linux): https://github.com/sudhanshumukherjeexx/prepup-linux
 
-## 📜 Changelog
+## 📜 Major Updates
 
 ### v0.3.0 (2025)
 - 🎉 Renamed from `prepup-linux` to `ride-cli`
