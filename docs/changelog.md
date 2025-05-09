@@ -56,8 +56,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Cross-platform support messaging (no longer implies Linux-only)
 - Alternative command `ride-cli` for consistency with package name
-- Migration instructions in README
-- Modern packaging configuration with pyproject.toml
 
-### Fixed
-- Misleading package name that suggested Linux-only support
