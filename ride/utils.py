@@ -756,6 +756,7 @@ class Prepup:
             return
     
     
+    
     def data_type_conversion(self):
         """
         The data_type_conversion function allows users to change the data types of columns
@@ -770,57 +771,77 @@ class Prepup:
         
         """
         try:
-            # load dataframe
+            # Load dataframe - explicitly ensure column names are strings
             isExist = os.path.exists("missing_data.parquet")
             if isExist:
                 dataframe = pd.read_parquet("missing_data.parquet")
             else:
-                dataframe = self.dataframe
+                dataframe = self.dataframe.copy()
                 
+            # Extra check to ensure proper column names
+            if dataframe is not None and not dataframe.empty:
+                # Check if column names are single letters (A, B, C, etc.) - possible header issue
+                single_letter_cols = all(len(str(col)) == 1 and str(col).isalpha() for col in dataframe.columns)
+                
+                if single_letter_cols:
+                    # Try to re-read the file if available
+                    if hasattr(self, 'file_path') and self.file_path and os.path.exists(self.file_path):
+                        print(colored(f"Attempting to reload dataset with explicit header...", 'yellow'))
+                        try:
+                            if self.file_path.endswith('.csv'):
+                                dataframe = pd.read_csv(self.file_path, header=0)
+                            elif self.file_path.endswith(('.xlsx', '.xls')):
+                                dataframe = pd.read_excel(self.file_path, header=0)
+                            elif self.file_path.endswith('.parquet'):
+                                dataframe = pd.read_parquet(self.file_path)
+                                
+                            print(colored(f"Successfully reloaded dataset with proper column names.", 'green'))
+                        except Exception as reload_error:
+                            print(colored(f"Error reloading file: {str(reload_error)}", 'red'))
+            
             if dataframe is None or dataframe.empty:
                 print(colored("No data available for conversion.", 'red'))
                 input("\nPress Enter to continue...")
                 return
                 
-                
-            # column preview with current data types
+            # Column preview with current data types
             print("\nColumns available for data type conversion:")
             print("-" * 90)
             print(f"{'#':<3} {'Column Name':<30} {'Current Type':<15} {'Sample Values':<40}")
             print("-" * 90)
             
-            # mapping of column index to column name for later reference
+            # Mapping of column index to column name for later reference
             column_map = {}
             
             for i, col in enumerate(dataframe.columns):
-                # get current data type
+                # Get current data type
                 col_type = str(dataframe[col].dtype)
                 
-                # sample values (up to 3)
+                # Sample values (up to 3)
                 samples = dataframe[col].dropna().head(3).values
                 sample_str = ', '.join([str(x) for x in samples])
                 if len(sample_str) > 40:
                     sample_str = sample_str[:37] + "..."
                 
-                # print row
-                print(f"{i+1:<3} {col[:30]:<30} {col_type:<15} {sample_str:<40}")
+                # Print row
+                print(f"{i+1:<3} {str(col)[:30]:<30} {col_type:<15} {sample_str:<40}")
                 
-                # store mapping
+                # Store mapping
                 column_map[i+1] = col
                 
             print("-" * 90)
             
-            # select columns to convert
+            # Select columns to convert
             print("\nSelect columns to convert:")
             print("(Enter column numbers separated by commas)")
             
             cols_input = input("\nEnter column numbers: ")
             
             try:
-                # parse column indices
+                # Parse column indices
                 selected_indices = [int(idx.strip()) for idx in cols_input.split(',')]
                 
-                # validate indices and get column names
+                # Validate indices and get column names
                 selected_columns = []
                 for idx in selected_indices:
                     if idx in column_map:
@@ -832,7 +853,7 @@ class Prepup:
                     print(colored("No valid columns selected. Exiting function.", 'red'))
                     return
                     
-                print(f"\nSelected columns: {', '.join(selected_columns)}")
+                print(f"\nSelected columns: {', '.join(str(col) for col in selected_columns)}")
                 
             except ValueError:
                 print(colored("Invalid input. Exiting function.", 'red'))
@@ -856,15 +877,15 @@ class Prepup:
                 "11": {"name": "Skip this column", "dtype": None}
             }
             
-            # process each selected column
+            # Process each selected column
             for col in selected_columns:
-                # get current data type
+                # Get current data type
                 current_type = str(df_converted[col].dtype)
                 
                 print(f"\nColumn: {col} (Current type: {current_type})")
                 print("Choose target data type:")
                 
-                # display data type options
+                # Display data type options
                 for key, option in dtype_options.items():
                     print(f"{key}. {option['name']}")
                 
@@ -874,7 +895,7 @@ class Prepup:
                     print(colored(f"Invalid choice. Skipping column '{col}'.", 'yellow'))
                     continue
                     
-                # skip if chosen
+                # Skip if chosen
                 if type_choice == "11":
                     print(f"Skipping column '{col}'")
                     continue
@@ -882,33 +903,33 @@ class Prepup:
                 try:
                     target_dtype = dtype_options[type_choice]["dtype"]
                     
-                    # handle conversion based on target type
+                    # Handle conversion based on target type
                     if target_dtype == "object":
-                        # convert to string
+                        # Convert to string
                         df_converted[col] = df_converted[col].astype(str)
                         
                     elif target_dtype in ["int8", "int16", "int32", "int64"]:
-                        # convert to integer with proper error handling
-                        # first convert to float (handles NaN better) then to integer
+                        # Convert to integer with proper error handling
+                        # First convert to float (handles NaN better) then to integer
                         df_converted[col] = pd.to_numeric(df_converted[col], errors='coerce')
-                        # use pandas nullable integer type (Int64, Int32, etc) to handle NaN values
+                        # Use pandas nullable integer type (Int64, Int32, etc) to handle NaN values
                         pandas_nullable_type = f"Int{target_dtype[-2:]}"  # Extract 64, 32, etc.
                         df_converted[col] = df_converted[col].astype(pandas_nullable_type)
                         
                     elif target_dtype in ["float16", "float32", "float64"]:
-                        # convert to float
+                        # Convert to float
                         df_converted[col] = pd.to_numeric(df_converted[col], errors='coerce').astype(target_dtype)
                         
                     elif target_dtype == "datetime64[ns]":
-                        # convert to datetime
+                        # Convert to datetime
                         df_converted[col] = pd.to_datetime(df_converted[col], errors='coerce')
                         
                     elif target_dtype == "bool":
-                        # for strings, convert common boolean terms
+                        # For strings, convert common boolean terms
                         if pd.api.types.is_string_dtype(df_converted[col]):
                             df_converted[col] = df_converted[col].str.lower().isin(['true', '1', 'yes', 'y', 't', 'on'])
                         else:
-                            # for numeric, handle NaN properly
+                            # For numeric, handle NaN properly
                             df_converted[col] = pd.to_numeric(df_converted[col], errors='coerce').fillna(0).astype(bool)
                     
                     print(colored(f"✅ Successfully converted '{col}' to {dtype_options[type_choice]['name']}", 'green'))
@@ -931,7 +952,7 @@ class Prepup:
                     print(colored("Operation canceled. Data was converted but not saved.", 'yellow'))
                 else:
                     try:
-                        # path
+                        # Path
                         path = data_path
                         if '\\' in path:
                             path = path.replace(os.sep, '/')
@@ -939,7 +960,7 @@ class Prepup:
                         if not path.endswith('.csv'):
                             path = path + "/ConvertedData.csv"
                         
-                        # create directory if it doesn't exist
+                        # Create directory if it doesn't exist
                         os.makedirs(os.path.dirname(path), exist_ok=True)
                         
                         # Save to CSV
@@ -950,7 +971,7 @@ class Prepup:
                         print(colored(f"Error saving file: {str(e)}", 'red'))
                         print(colored("Data was converted but could not be saved to file.", 'yellow'))
             
-            # update the class dataframe
+            # Update the class dataframe
             update_df = input("\nUpdate the current working dataframe with these conversions? (y/n): ")
             
             if update_df.lower() == 'y':
@@ -961,7 +982,7 @@ class Prepup:
         except Exception as e:
             print(colored(f"An unexpected error occurred: {str(e)}", 'red'))
             import traceback
-            traceback.print_exc()  # print detailed error for debugging
+            traceback.print_exc()  # Print detailed error for debugging
             return
 
 

@@ -190,6 +190,8 @@ class RideInteractive:
         
         print(colored(bottom_border, 'cyan'))  
 
+
+
     def load_data(self):
         """Load data from a file"""
         
@@ -199,11 +201,10 @@ class RideInteractive:
         )
         
         print("\nOptions:")
-        print("1. Load your own data")
-        print("2. Load default data (Pre-loaded)")
+        print("1. Load your data")
         print("0. Back to main menu")
         
-        choice = input("\nEnter your choice (0-2): ")
+        choice = input("\nEnter your choice (0-1): ")
         
         if choice == '0':
             return
@@ -236,79 +237,6 @@ class RideInteractive:
             except Exception as e:
                 print(colored(f"Error loading file: {str(e)}", 'red'))
                 input("Press Enter to continue...")
-        
-        elif choice == '2':
-            default_datasets = {
-                '1': {
-                    'name': 'ames_housing.csv',
-                    'description': 'House prices in Ames, Iowa with 82 features about property characteristics and sale information.'
-                },
-                '2': {
-                    'name': 'camera_dataset.csv',
-                    'description': 'Digital camera specifications including resolution, zoom, dimensions, and pricing information.'
-                },
-                '3': {
-                    'name': 'Fish.csv',
-                    'description': 'Fish species measurements including weight, length, height, and width data.'
-                },
-                '4': {
-                    'name': 'penguins.csv',
-                    'description': 'Palmer Penguins dataset with penguin species measurements and demographic information.'
-                },
-                '5': {
-                    'name': 'titanic.csv',
-                    'description': 'Titanic passengers data with survival information, demographics, and ticket details.'
-                }
-            }
-            
-            print("\n📊 Default Datasets Available:")
-            print("-" * 80)
-            for key, dataset in default_datasets.items():
-                print(f"{key}. {dataset['name']}")
-                print(f"   {dataset['description']}")
-                print()
-            print("-" * 80)
-            print("0. Back to dataset loading options")
-            
-            dataset_choice = input("\nSelect a dataset (0-5): ")
-            
-            if dataset_choice == '0':
-                self.load_data()  
-                return
-            
-            if dataset_choice in default_datasets:
-                dataset_name = default_datasets[dataset_choice]['name']
-                try:
-                    datasets_folder = os.path.join(os.getcwd(), 'datasets')
-                    file_path = os.path.join(datasets_folder, dataset_name)
-                    
-                    if not os.path.exists(file_path):
-                        file_path = os.path.join(os.getcwd(), dataset_name)
-                    
-                    if not os.path.exists(file_path):
-                        print(colored(f"\nError: '{dataset_name}' not found in current directory or datasets folder.", 'red'))
-                        print(colored(f"Please ensure the file exists at: {datasets_folder}/{dataset_name}", 'yellow'))
-                        input("\nPress Enter to continue...")
-                        return
-                    
-                    self.dataframe = pd.read_csv(file_path)
-                    self.file_path = file_path
-                    self.data_processor = Prepup(self.dataframe)
-                    
-                    print(colored(f"\nSuccess! Dataset '{dataset_name}' loaded with {self.dataframe.shape[0]} rows and {self.dataframe.shape[1]} columns.", 'green'))
-                    
-                    print("\nPreview of the first 5 rows:")
-                    print(self.dataframe.head())
-                    
-                    input("\nPress Enter to continue to the main menu...")
-                    
-                except Exception as e:
-                    print(colored(f"Error loading dataset: {str(e)}", 'red'))
-                    input("Press Enter to continue...")
-            else:
-                print(colored("Invalid choice. Please try again.", 'red'))
-                input("Press Enter to continue...")
-                self.load_data()  
         
         else:
             print(colored("Invalid choice. Please try again.", 'red'))

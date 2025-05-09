@@ -6,7 +6,7 @@ long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
 setuptools.setup(
     name="ride-cli",
-    version="0.3.2",  
+    version="0.3.3",  
     author="Sudhanshu Mukherjee",
     author_email="sudhanshumukherjeexx@gmail.com",
     description="RIDE: Rapid Insights Data Engine - An open-source toolkit for data analysis in terminal",
