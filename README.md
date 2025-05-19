@@ -15,6 +15,12 @@
 
 **RIDE-CLI** (Rapid Insights Data Engine) is a powerful, user-friendly command-line tool designed to simplify and streamline your data analysis workflow. Whether you're a data scientist, analyst, or researcher, RIDE provides an intuitive interface for exploring, cleaning, and preparing your datasets - all from your terminal!
 
+## 🔗 Package Links
+
+- Documentation: https://sudhanshumukherjeexx.github.io/ride-cli/ 
+- Github: https://github.com/sudhanshumukherjeexx/ride-cli
+- PyPI: https://pypi.org/project/ride-cli/
+- Previous Package (prepup-linux): https://github.com/sudhanshumukherjeexx/prepup-linux
 
 ## ✨ Features
 
@@ -171,13 +177,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📋 License
 Distributed under the MIT License. See `LICENSE` for more information.
-
-## 🔗 Package Links
-
-- Documentation: https://sudhanshumukherjeexx.github.io/ride-cli/ 
-- Github: https://github.com/sudhanshumukherjeexx/ride-cli
-- PyPI: https://pypi.org/project/ride-cli/
-- Previous Package (prepup-linux): https://github.com/sudhanshumukherjeexx/prepup-linux
 
 ## 📜 Major Updates
 
