@@ -1,9 +1,8 @@
 # 🚀 RIDE CLI: Rapid Interactive Data Exploration
 
-<p align="center"><img src="datasets/ride-cli-logo.png" width="50" height="50" alt="RIDE-CLI Logo"></p>
+<p align="center"><img src="datasets/ride-cli-logo.png" width="80" height="80" alt="RIDE-CLI Logo"></p>
 
 
-![Static Badge](https://img.shields.io/badge/Built_with_%E2%99%A5%EF%B8%8F-Sudhanshu_Mukherjee-black?link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsudhanshumukherjeexx%2F)
 
 ![Python Versions](https://img.shields.io/badge/python-3.10+-blue.svg)
 [![image](https://img.shields.io/pypi/v/ride-cli.svg)](https://pypi.python.org/pypi/ride-cli)
