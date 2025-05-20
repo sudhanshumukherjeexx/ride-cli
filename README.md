@@ -1,6 +1,6 @@
 # 🚀 RIDE CLI: Rapid Interactive Data Exploration
 
-<p align="center"><img src=".datasets/ride-cli-logo.png" width="50" height="50" alt="RIDE-CLI Logo"></p>
+<p align="center"><img src="datasets/ride-cli-logo.png" width="50" height="50" alt="RIDE-CLI Logo"></p>
 
 
 ![Static Badge](https://img.shields.io/badge/Built_with_%E2%99%A5%EF%B8%8F-Sudhanshu_Mukherjee-black?link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsudhanshumukherjeexx%2F)
@@ -20,7 +20,7 @@
 
 ## RIDE-CLI Architecture
 
-![RIDE-CLI](.datasets/ride-cli-arc.png)
+![RIDE-CLI](datasets/ride-cli-arc.png)
 
 ## 🔗 Package Links
 
